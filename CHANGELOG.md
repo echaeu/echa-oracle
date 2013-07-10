@@ -7,6 +7,10 @@
 * Oracle ASM instance creation.
 * OEM 11g agent installation.
 
+## 1.0.2:
+
+* Markdown fixes and general clean-up for README.
+
 ## 1.0.1:
 
 * Minor fix to listener configuration.
