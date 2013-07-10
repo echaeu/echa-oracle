@@ -28,28 +28,28 @@ Quickstart
 * Spin up a CentOS VM using your choice of hypervisor and/or Vagrant,
   and the `CentOS-6.4-x86_64-minimal.iso`, which you can get here:
 
-  [`CentOS-6.4-x86_64-minimal.iso`](https://www.centos.org/).
+  [`CentOS-6.4-x86_64-minimal.iso`](https://www.centos.org/)
 
-* Your NIC is not up by default, make sure to edit 
+* Your NIC is not up by default, make sure to edit the
   `/etc/sysconfig/ifcfg-eth0` file and run `service network start`.
 * Make sure your FQDN is properly configured (test this with
-  `hostname -f`), else runInstaller will fail.
+  `hostname -f`), else `runInstaller` will fail.
 * You don't want to transfer Oracle's binaries in the clear across
   the Internet. Set up a Web server to serve them over HTTPS unless
   you're on a secure local network.
 * Create a role to override the default attribute values for the URLs
   of Oracle's install files & patches with your own; e.g.:
 
-    name "ora_quickstart"
-    description "Role applied to Oracle quickstart test machines."
-    run_list 'recipe[echa-oracle]', 'recipe[echa-oracle::logrotate_alert_log]', 'recipe[echa-oracle::logrotate_listener]', 'recipe[echa-oracle::createdb]'
-    override_attributes :oracle => {:rdbms => {:latest_patch => {:url => 'https://secure.server.localdomain/path/to/p14727310_112030_Linux_x86_64.zip'}, :opatch_update_url => 'https://secure.server.localdomain/path/to/p6880880_112000_Linux_x86_64.zip', :install_files => ['https://secure.server.localdomain/path/to/p10404530_112030_Linux-x86-64_1of7.zip', 'https://secure.server.localdomain/path/to/p10404530_112030_Linux-x86-64_2of7.zip']}}
+        name "ora_quickstart"
+        description "Role applied to Oracle quickstart test machines."
+        run_list 'recipe[echa-oracle]', 'recipe[echa-oracle::logrotate_alert_log]', 'recipe[echa-oracle::logrotate_listener]', 'recipe[echa-oracle::createdb]'
+        override_attributes :oracle => {:rdbms => {:latest_patch => {:url => 'https://secure.server.localdomain/path/to/p14727310_112030_Linux_x86_64.zip'}, :opatch_update_url => 'https://secure.server.localdomain/path/to/p6880880_112000_Linux_x86_64.zip', :install_files => ['https://secure.server.localdomain/path/to/p10404530_112030_Linux-x86-64_1of7.zip', 'https://secure.server.localdomain/path/to/p10404530_112030_Linux-x86-64_2of7.zip']}}
 
 
 * You need to set up an encrypted data bag item to secure the oracle
   user's password. See Opscode's docs site for details on encrypted
   data bags:
-  [encrypted data bag doc doc](http://docs.opscode.com/essentials_data_bags_encrypt.html)
+  [encrypted data bag doc](http://docs.opscode.com/essentials_data_bags_encrypt.html)
   Your encrypted item requires a key named `pw`, whose value is the
   password of the oracle user- you can set that to whatever you want.
   You must set the value of `node[:oracle][:user][:edb]` to the name
@@ -69,7 +69,7 @@ Quickstart
 
 * Bootstrap the node, telling Chef to create the FOO database on it:
 
-    knife bootstrap HOSTNAME -r 'role[ora_quickstart]' -j '{"oracle" : {"rdbms": {"dbs": {"FOO" : false}}}}'
+        knife bootstrap HOSTNAME -r 'role[ora_quickstart]' -j '{"oracle" : {"rdbms": {"dbs": {"FOO" : false}}}}'
 
 * Go grab a cup of tea, as this is apt to take a fair amount of time
 to complete :-)
@@ -134,10 +134,10 @@ certification matrix on My Oracle Support:
   For this version of the cookbook, you'll need the following
   packages:
 
-  Patch 14727310 (11.2.0.3.5): `p14727310_112030_Linux_x86_64.zip`
-  OPatch 6880880 (11.2.0.3.3): `p6880880_112000_Linux_x86_64.zip`
-  Oracle 11.2.0.3 media: `p10404530_112030_Linux-x86-64_1of7.zip`
-  Oracle 11.2.0.3 media: `p10404530_112030_Linux-x86-64_2of7.zip`
+  Patch 14727310 (11.2.0.3.5): `p14727310_112030_Linux_x86_64.zip`  
+  OPatch 6880880 (11.2.0.3.3): `p6880880_112000_Linux_x86_64.zip`  
+  Oracle 11.2.0.3 media: `p10404530_112030_Linux-x86-64_1of7.zip`  
+  Oracle 11.2.0.3 media: `p10404530_112030_Linux-x86-64_2of7.zip`  
 
   Note: You don't need all seven 11.2.0.3 media files in order to
   just install the RDBMS' binaries.
@@ -162,7 +162,7 @@ certification matrix on My Oracle Support:
 Attributes
 ==========
 
-echa-oracle defines a single top-level namespace: ':oracle'. Values
+echa-oracle defines a single top-level namespace: `:oracle`. Values
 that pertain to the whole Oracle setup (not only the RDBMS) are
 defined there directly:
 * `node[:oracle][:ora_base]` - sets the Oracle base's absolute
@@ -173,7 +173,7 @@ defined there directly:
 
 `:oracle` has two children: `:user`, and `:rdbms`.
 
-Attributes under ':user' are specific to the oracle user, as you may
+Attributes under `:user` are specific to the oracle user, as you may
 have guessed:
 * `node[:oracle][:user][:uid]`
 * `node[:oracle][:user][:gid]`
