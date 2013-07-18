@@ -5,7 +5,7 @@ EDITOR=/bin/vi
 ORACLE_BASE=<%= node[:oracle][:ora_base] %>
 ORACLE_HOME=<%= node[:oracle][:rdbms][:ora_home] %>
 ORACLE_SID=
-ORA_ENV=11R23
+ORA_ENV=<%= File.basename node[:oracle][:rdbms][:ora_home] %>
 ORACLE_HOSTNAME=`hostname -f`
 export EDITOR ORACLE_BASE ORACLE_HOME ORACLE_SID ORA_ENV ORACLE_HOSTNAME
 
