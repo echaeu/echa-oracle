@@ -10,11 +10,10 @@ Oracle version 11.2.0.3 was used to develop this cookbook, but the
 code should work for other versions as well, with some
 modifications.
 
-The latest patch from My Oracle Support (MOS) as of this writing is
-Patch 16056266 - 11.2.0.3.6 Patch Set Update.
-
 At the time this cookbook was being developed the latest patch was
-Patch 14727310 - 11.2.0.3.5, which is the one it uses.
+Patch 14727310 - 11.2.0.3.5, but it has now been updated to the
+latest patch from Oracle 7/16/2013, Patch 16619892 - 11.2.0.3.7
+Patch Set Update.
 
 For guidelines on how to adapt the cookbook for other PSU versions,
 see `latest_dbpatch`, under `Recipes`, below.
@@ -43,7 +42,7 @@ Quickstart
         name "ora_quickstart"
         description "Role applied to Oracle quickstart test machines."
         run_list 'recipe[echa-oracle]', 'recipe[echa-oracle::logrotate_alert_log]', 'recipe[echa-oracle::logrotate_listener]', 'recipe[echa-oracle::createdb]'
-        override_attributes :oracle => {:rdbms => {:latest_patch => {:url => 'https://secure.server.localdomain/path/to/p14727310_112030_Linux_x86_64.zip'}, :opatch_update_url => 'https://secure.server.localdomain/path/to/p6880880_112000_Linux_x86_64.zip', :install_files => ['https://secure.server.localdomain/path/to/p10404530_112030_Linux-x86-64_1of7.zip', 'https://secure.server.localdomain/path/to/p10404530_112030_Linux-x86-64_2of7.zip']}}
+        override_attributes :oracle => {:rdbms => {:latest_patch => {:url => 'https://secure.server.localdomain/path/to/p16619892_112030_Linux-x86-64.zip'}, :opatch_update_url => 'https://secure.server.localdomain/path/to/p6880880_112000_Linux-x86-64.zip', :install_files => ['https://secure.server.localdomain/path/to/p10404530_112030_Linux-x86-64_1of7.zip', 'https://secure.server.localdomain/path/to/p10404530_112030_Linux-x86-64_2of7.zip']}}
 
 
 * You need to set up an encrypted data bag item to secure the oracle
@@ -134,8 +133,8 @@ certification matrix on My Oracle Support:
   For this version of the cookbook, you'll need the following
   packages:
 
-  Patch 14727310 (11.2.0.3.5): `p14727310_112030_Linux_x86_64.zip`  
-  OPatch 6880880 (11.2.0.3.3): `p6880880_112000_Linux_x86_64.zip`  
+  Patch 14727310 (11.2.0.3.7): `p16619892_112030_Linux-x86-64.zip`  
+  OPatch 6880880 (11.2.0.3.4): `p6880880_112000_Linux-x86-64.zip`  
   Oracle 11.2.0.3 media: `p10404530_112030_Linux-x86-64_1of7.zip`  
   Oracle 11.2.0.3 media: `p10404530_112030_Linux-x86-64_2of7.zip`  
 
@@ -221,13 +220,13 @@ rather unsurprisingly:
 * `node[:oracle][:rdbms][:dbsnmp_pw]` - sets the password for the `DBSNMP`
   default open database user. Has a default placeholder value.
 * `node[:oracle][:rdbms][:opatch_update_url]` - sets the URL of the
-  OPatch update (`p6880880_112000_Linux_x86_64.zip)`.
+  OPatch update (`p6880880_112000_Linux-x86-64.zip)`.
 * `node[:oracle][:rdbms][:latest_patch][:url]` - URL of the latest
-  Oracle RDBMS patch (`p14727310_112030_Linux_x86_64.zip`).
+  Oracle RDBMS patch (`p16619892_112030_Linux-x86-64.zip`).
 * `node[:oracle][:rdbms][:latest_patch][:dirname]` - sets the name of
   the latest patch's expanded directory. Will typically match the
   part of the latest patch's filename following the initial 'p', up
-  until (and exclusive of) the first `_` (`14727310`, in our
+  until (and exclusive of) the first `_` (`16619892`, in our
   case), but this is not guaranteed.
 * `node[:oracle][:rdbms][:latest_patch][:is_installed]` - flag to
   indicate whether `latest_dbpatch` recipe has patched the RDBMS, and
@@ -309,7 +308,7 @@ to the proper URL, pointing at that patch on your HTTPS server.
 
 Also remember to update OPatch 6880880 to the latest version.
 
-Previous PSU patches should work without many changes. 11.2.0.3.3
+Previous PSU patches should work without many changes. 11.2.0.3.4
 worked fine in our environment.
 
 ## `get_version`

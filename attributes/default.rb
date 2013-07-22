@@ -58,13 +58,13 @@ default[:oracle][:rdbms][:system_pw] = 'system_pw_goes_here'
 default[:oracle][:rdbms][:dbsnmp_pw] = 'dbsnmp_pw_goes_here'
 
 # Settings related to patching.
-default[:oracle][:rdbms][:opatch_update_url] = 'https://https-server.example.localdomain/path/to/p6880880_112000_Linux_x86_64.zip'
-default[:oracle][:rdbms][:latest_patch][:url] = 'https://https-server.example.localdomain/path/to/p14727310_112030_Linux_x86_64.zip'
+default[:oracle][:rdbms][:opatch_update_url] = 'https://https-server.example.localdomain/path/to/p6880880_112000_Linux-x86-64.zip'
+default[:oracle][:rdbms][:latest_patch][:url] = 'https://https-server.example.localdomain/path/to/p16619892_112030_Linux-x86-64.zip'
 # Typically the latest patch's expanded directory's name will match
 # the part of the latest patch's filename following the initial 'p', 
 # up until , and excluding, the first '_', but this is not guaranteed to
 # always be the case.
-default[:oracle][:rdbms][:latest_patch][:dirname] = '14727310'
+default[:oracle][:rdbms][:latest_patch][:dirname] = '16619892'
 default[:oracle][:rdbms][:latest_patch][:is_installed] = false
 
 # Hash of DBs to create; the keys are the DBs' names, the values are Booleans,
