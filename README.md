@@ -133,7 +133,7 @@ certification matrix on My Oracle Support:
   For this version of the cookbook, you'll need the following
   packages:
 
-  Patch 14727310 (11.2.0.3.7): `p16619892_112030_Linux-x86-64.zip`  
+  Patch 16619892 (11.2.0.3.7): `p16619892_112030_Linux-x86-64.zip`  
   OPatch 6880880 (11.2.0.3.4): `p6880880_112000_Linux-x86-64.zip`  
   Oracle 11.2.0.3 media: `p10404530_112030_Linux-x86-64_1of7.zip`  
   Oracle 11.2.0.3 media: `p10404530_112030_Linux-x86-64_2of7.zip`  
