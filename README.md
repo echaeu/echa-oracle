@@ -1,3 +1,11 @@
+Announcement
+============
+
+**This cookbook is no longer supported.** Please goto the following
+link for a relaunched oracle cookbook.
+
+[`aririikonen/oracle`](https://www.github.com/aririikonen/oracle)
+
 Description
 ===========
 
